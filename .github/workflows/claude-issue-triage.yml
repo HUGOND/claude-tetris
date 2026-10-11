@@ -48,7 +48,11 @@ jobs:
                  área (`gameplay`, `rendering`, `input`, `scoring`, `ui`).
                - Asigna con `gh issue edit --add-label`. Si el evento es `edited`, quita con
                  `--remove-label` los labels que ya no apliquen.
-            3. Publica UN comentario de diagnóstico en Markdown. Debe empezar con la línea
+            3. Publica UN comentario de diagnóstico. El comentario debe estar escrito en formato
+               Markdown compatible con GitHub (GitHub Flavored Markdown): usa encabezados (`##`),
+               listas, tablas, bloques de código con triple acento grave y lenguaje (```js),
+               `código en línea` y referencias a issues/PRs (#123) para que GitHub lo renderice
+               correctamente. Debe empezar con la línea
                `<!-- claude-issue-triage -->` e incluir estas secciones:
                - Resumen
                - Tipo y labels asignados
