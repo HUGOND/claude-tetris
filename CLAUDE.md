@@ -29,7 +29,7 @@ Then visit `http://localhost:8000`. After editing `game.js`, `style.css`, or `in
 Everything lives in `game.js` as top-level module state (no classes, no build-time modules — plain script tag loaded by `index.html`).
 
 - **Board model**: `board` is a `ROWS × COLS` (20×10) matrix; each cell is `0` (empty) or an integer 1–7 identifying which piece color occupies it (indexes into `COLORS`).
-- **Pieces**: `PIECES` defines the 7 tetrominoes as square matrices. Rotation is done by `rotateCW`, a transpose + row-reverse — there is no precomputed rotation state table.
+- **Pieces**: `PIECES` defines the 7 tetrominoes plus a special 3×3 "Tuerca" (nut) ring piece with an empty center, all as square matrices. `randomPiece` picks uniformly from `PIECES.length - 1` types. Rotation is done by `rotateCW`, a transpose + row-reverse — there is no precomputed rotation state table.
 - **Collision**: `collide(shape, ox, oy)` checks a shape at an offset against board bounds and existing fixed blocks. It's the single choke point used by movement, rotation, spawning, and ghost-piece projection.
 - **Wall kicks**: `tryRotate()` rotates then tries offsets `[0, -1, 1, -2, 2]` columns until one doesn't collide, otherwise the rotation is discarded.
 - **Game loop**: `loop(ts)` runs via `requestAnimationFrame`, accumulating elapsed time in `dropAccum` and dropping the piece one row once it exceeds `dropInterval`. `animId` holds the current RAF handle so pause/game-over can cancel it.
